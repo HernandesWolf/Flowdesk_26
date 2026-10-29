@@ -1,0 +1,49 @@
+### FlowDesk quick tour (VS Code REST Client / IntelliJ HTTP Client)
+### Start the app with SPRING_PROFILES_ACTIVE=demo to have these users available.
+
+@host = http://localhost:8080
+
+### 1. Log in as the demo manager
+# @name login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "manager@demo.flowdesk.dev", "password": "Demo@12345" }
+
+###
+@token = {{login.response.body.accessToken}}
+
+### 2. List open orders (filters: status, priority, assigneeId, customerId, overdue, text)
+GET {{host}}/api/service-orders?status=OPEN&page=0&size=10
+Authorization: Bearer {{token}}
+
+### 3. What can I do with this order next? (replace the id)
+GET {{host}}/api/service-orders/00000000-0000-0000-0000-000000000000/allowed-transitions
+Authorization: Bearer {{token}}
+
+### 4. Try an invalid jump: OPEN -> COMPLETED is rejected with 409
+POST {{host}}/api/service-orders/00000000-0000-0000-0000-000000000000/transitions
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{ "targetStatus": "COMPLETED", "resolution": "Done" }
+
+### 5. Full audit trail of an order
+GET {{host}}/api/service-orders/00000000-0000-0000-0000-000000000000/timeline
+Authorization: Bearer {{token}}
+
+### 6. Dashboard and reports (manager/admin)
+GET {{host}}/api/dashboard/summary?days=30
+Authorization: Bearer {{token}}
+
+###
+GET {{host}}/api/reports/productivity?from=2026-01-01&to=2026-12-31
+Authorization: Bearer {{token}}
+
+###
+GET {{host}}/api/reports/service-orders.csv?from=2026-01-01&to=2026-12-31
+Authorization: Bearer {{token}}
+
+### 7. Notifications
+GET {{host}}/api/notifications/unread-count
+Authorization: Bearer {{token}}

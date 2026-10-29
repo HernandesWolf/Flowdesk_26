@@ -1,0 +1,15 @@
+package com.flowdesk.audit;
+
+public enum AuditAction {
+    CREATED,
+    UPDATED,
+    ASSIGNED,
+    STATUS_CHANGED,
+    PRIORITY_CHANGED,
+    DIAGNOSIS_UPDATED,
+    RESOLUTION_UPDATED,
+    RECORD_ADDED,
+    ATTACHMENT_ADDED,
+    SLA_DUE_SOON,
+    SLA_BREACHED
+}
