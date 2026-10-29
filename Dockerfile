@@ -8,7 +8,7 @@ COPY src ./src
 RUN mvn -B -q -DskipTests package
 
 # ---- Runtime stage -------------------------------------------------------------
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 RUN addgroup -S flowdesk && adduser -S flowdesk -G flowdesk \
     && mkdir -p /data/attachments && chown -R flowdesk:flowdesk /data
 WORKDIR /app
