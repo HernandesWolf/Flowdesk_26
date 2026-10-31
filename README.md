@@ -1,6 +1,6 @@
 # FlowDesk
 
-[![CI](https://github.com/YOUR_USER/flowdesk/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USER/flowdesk/actions/workflows/ci.yml)
+[![CI](https://github.com/HernandesWolf/Flowdesk_26/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USER/flowdesk/actions/workflows/ci.yml)
 ![Java 21](https://img.shields.io/badge/Java-21-orange)
 ![Spring Boot 3.3](https://img.shields.io/badge/Spring%20Boot-3.3-brightgreen)
 ![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-blue)
